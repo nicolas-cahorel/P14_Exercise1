@@ -3,9 +3,9 @@
 Ce projet est une application Android de gestion de la relation client (CRM) pour l'entreprise Relayance. Elle permet à l'entreprise de suivre efficacement le flux de travail des commerciaux concernant les propositions commerciales et de favoriser les retours de la direction.
 
 ### Fonctionnalités
-Affichage des clients : Liste tous les clients dans une vue principale.
-Détails des clients : Affiche les détails spécifiques d'un client sélectionné, tels que le nom et l'e-mail.
-Ajout et modification des clients : Permet d'ajouter de nouveaux clients ou de modifier les informations des clients existants.
+- Affichage des clients : Liste tous les clients dans une vue principale.
+- Détails des clients : Affiche les détails spécifiques d'un client sélectionné, tels que le nom et l'e-mail.
+- Ajout et modification des clients : Permet d'ajouter de nouveaux clients.
 
 ### Technologie
 

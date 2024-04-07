@@ -27,7 +27,7 @@ Cloner le dépôt
 
 git clone https://github.com/votreusername/projet-crm-android.git
 
-Ouvrir dans Android Studio
+### Ouvrir dans Android Studio
 
 Lancez Android Studio et choisissez "Open an existing Android Studio project". Naviguez jusqu'au dossier cloné et ouvrez-le.
 

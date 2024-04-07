@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Relayance</string>
+    <string name="add_customer">Add customer</string>
+    <string name="email">email</string>
+    <string name="save_changes">Save changes</string>
+    <string name="name">name</string>
+    <string name="no_email">No email</string>
+    <string name="no_name">No name</string>
+</resources>

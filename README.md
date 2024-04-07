@@ -25,7 +25,7 @@ L'application est développée en Kotlin et utilise les bibliothèques suivantes
 
 Cloner le dépôt
 
-git clone https://github.com/votreusername/projet-crm-android.git
+git clone https://github.com/OpenClassrooms-Student-Center/relayance-kotlin.git
 
 ### Ouvrir dans Android Studio
 

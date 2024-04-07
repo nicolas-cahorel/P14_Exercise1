@@ -1,10 +1,12 @@
 package com.kirabium.relayance.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kirabium.relayance.R
 import com.kirabium.relayance.data.DummyData
 import com.kirabium.relayance.databinding.ActivityDetailBinding
+import com.kirabium.relayance.extension.DateExt.Companion.toHumanDate
 
 class DetailActivity : AppCompatActivity() {
 
@@ -26,10 +28,18 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupUI() {
         val customerId = intent.getIntExtra(EXTRA_CUSTOMER_ID, -1)
-        val customer = DummyData.customers.find { it.id == customerId }
-
-        binding.emailTextView.text = customer?.email ?: getString(R.string.no_email)
-        binding.nameTextView.text = customer?.name ?: getString(R.string.no_name)
+        DummyData.customers.find { it.id == customerId }?.let {
+            with(binding) {
+                emailTextView.text = it.email
+                nameTextView.text = it.name
+                dateTextView.text = getString(R.string.created_at, it.createdAt.toHumanDate())
+                if (it.isNewCustomer()) {
+                    newRibbonTextView.visibility = View.VISIBLE
+                } else {
+                    newRibbonTextView.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun setupBinding() {
@@ -42,3 +52,5 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }
+
+

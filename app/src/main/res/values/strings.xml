@@ -6,4 +6,6 @@
     <string name="name">name</string>
     <string name="no_email">No email</string>
     <string name="no_name">No name</string>
+    <string name="created_at">Created at %1$s</string>
+    <string name="new_ribbon">New</string>
 </resources>

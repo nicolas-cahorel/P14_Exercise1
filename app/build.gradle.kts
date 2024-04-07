@@ -1,11 +1,23 @@
+import com.android.build.gradle.BaseExtension
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("jacoco")
 }
-
+tasks.withType<Test> {
+    extensions.configure(JacocoTaskExtension::class) {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*")
+    }
+}
 android {
     namespace = "com.kirabium.relayance"
     compileSdk = 34
+
+    testCoverage {
+        version = "0.8.8"
+    }
 
     defaultConfig {
         applicationId = "com.kirabium.relayance"
@@ -32,6 +44,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage = true
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -52,6 +68,29 @@ android {
         }
     }
 }
+
+val androidExtension = extensions.getByType<BaseExtension>()
+
+val jacocoTestReport by tasks.registering(JacocoReport::class) {
+    dependsOn("testDebugUnitTest", "createDebugCoverageReport")
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports"
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+
+    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug")
+    val mainSrc = androidExtension.sourceSets.getByName("main").java.srcDirs
+
+    classDirectories.setFrom(debugTree)
+    sourceDirectories.setFrom(files(mainSrc))
+    executionData.setFrom(fileTree(buildDir) {
+        include("**/*.exec", "**/*.ec")
+    })
+}
+
 
 dependencies {
 

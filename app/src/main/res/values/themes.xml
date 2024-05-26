@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.Relayance" parent="Theme.Material3.DayNight" />
+    <style name="Theme.Relayance.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar" />
 </resources>
